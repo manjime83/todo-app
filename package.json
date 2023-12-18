@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pocketbase:install": "wget https://github.com/pocketbase/pocketbase/releases/download/v0.20.1/pocketbase_0.20.1_darwin_arm64.zip && unzip -o pocketbase_0.20.1_darwin_arm64.zip pocketbase && rm pocketbase_0.20.1_darwin_arm64.zip && chmod +x pocketbase",
+    "pocketbase:run": "pocketbase serve"
   },
   "dependencies": {
     "pocketbase": "^0.20.1",

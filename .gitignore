@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# pocketbase directories
+pocketbase
+pb_data
