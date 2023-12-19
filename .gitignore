@@ -1,28 +1,8 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
+# node exludes
 node_modules
-dist
-dist-ssr
 *.local
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
 # pocketbase directories
-pocketbase
-pb_data
+pocketbase/pocketbase
+pocketbase/pb_data
+pocketbase/pb_public

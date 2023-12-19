@@ -58,9 +58,6 @@ export default () => {
   const googleSignup = async () => {
     try {
       const authData = await pb.collection("users").authWithOAuth2({ provider: "google" });
-      if (authData.meta) {
-        await pb.collection("users").update(authData.record.id, { name: authData.meta.name });
-      }
       navigate("/");
     } catch (e) {
       if (e instanceof ClientResponseError) {

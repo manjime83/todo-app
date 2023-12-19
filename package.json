@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently -n web,api \"vite\" \"npm:pocketbase\"",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "pocketbase:install": "wget https://github.com/pocketbase/pocketbase/releases/download/v0.20.1/pocketbase_0.20.1_darwin_arm64.zip && unzip -o pocketbase_0.20.1_darwin_arm64.zip pocketbase && rm pocketbase_0.20.1_darwin_arm64.zip && chmod +x pocketbase",
-    "pocketbase:run": "pocketbase serve"
+    "pocketbase:install": "export PB_VERSION=0.20.1 PB_ARCHITECTURE=darwin_arm64 && mkdir -p pocketbase && cd pocketbase && wget -O pocketbase.zip https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_${PB_ARCHITECTURE}.zip && unzip -o pocketbase.zip pocketbase && rm pocketbase.zip && chmod +x pocketbase",
+    "pocketbase": "./pocketbase/pocketbase serve"
   },
   "dependencies": {
     "pocketbase": "^0.20.1",
@@ -19,18 +19,19 @@
     "react-router-dom": "^6.21.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17",
-    "@typescript-eslint/eslint-plugin": "^6.14.0",
-    "@typescript-eslint/parser": "^6.14.0",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.16",
-    "eslint": "^8.55.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "postcss": "^8.4.32",
-    "tailwindcss": "^3.3.6",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "tailwindcss": "^3.3.7",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10"
   }
 }
