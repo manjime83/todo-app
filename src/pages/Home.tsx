@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div>
       TodoApp
-      <p>
+      <p className="m-2 p-3">
         <Button>Test</Button>
       </p>
     </div>
