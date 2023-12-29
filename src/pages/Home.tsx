@@ -1,15 +1,15 @@
 import { Button } from "@/components/ui/button";
 import pb from "@/lib/pocketbase";
-import { UserModel } from "@/lib/types";
+import { UsersResponse } from "@/lib/pocketbase-types";
 import { FormEvent, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const [users, setUsers] = useState<UserModel[]>();
+  const [users, setUsers] = useState<UsersResponse[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const usersCollection = pb.collection<UserModel>("users");
+    const usersCollection = pb.collection("users");
 
     usersCollection
       .getFullList()
