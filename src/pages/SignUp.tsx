@@ -89,8 +89,8 @@ const SignUp = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSignIn)} className="space-y-8">
-        <Card className="w-90">
+      <form onSubmit={form.handleSubmit(onSignIn)}>
+        <Card className="w-96">
           <CardHeader className="space-y-1">
             <CardTitle className="text-2xl">Create an account</CardTitle>
             <CardDescription>Enter your email below to create your account</CardDescription>
