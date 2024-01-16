@@ -18,7 +18,7 @@ export function Toaster() {
           </Toast>
         );
       })}
-      <ToastViewport />
+      <ToastViewport className="gap-2 sm:inset-x-0 sm:mx-auto" />
     </ToastProvider>
   );
 }

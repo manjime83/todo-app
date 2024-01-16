@@ -8,6 +8,7 @@ import { useToast } from "@/components/ui/use-toast";
 import pb from "@/lib/pocketbase";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ClientResponseError } from "pocketbase";
+import { FormEvent } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
@@ -59,11 +60,13 @@ const SignUp = () => {
     }
   };
 
-  const onGitHubSignIn = () => {
+  const onGitHubSignIn = (e: FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     update("github");
   };
 
-  const onGoogleSignIn = () => {
+  const onGoogleSignIn = (e: FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     update("google");
   };
 
