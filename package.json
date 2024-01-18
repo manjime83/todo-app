@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -n web,api \"vite\" \"npm:pocketbase\"",
-    "build": "tsc && vite build && docker build pocketbase -t manjime83/pocketbase",
+    "build": "tsc && vite build && docker build -t manjime83/pocketbase -f ./Dockerfile pocketbase",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "pocketbase:install": "export PB_VERSION=$(curl -s https://api.github.com/repos/pocketbase/pocketbase/releases/latest | jq -r .tag_name) PB_ARCH=$(uname -o | tr '[:upper:]' '[:lower:]')_$(uname -m) && mkdir -p pocketbase && cd pocketbase && curl -Lo pocketbase.zip https://github.com/pocketbase/pocketbase/releases/download/${PB_VERSION}/pocketbase_${PB_VERSION:1}_${PB_ARCH}.zip && unzip -o pocketbase.zip pocketbase && rm pocketbase.zip && chmod +x pocketbase",
