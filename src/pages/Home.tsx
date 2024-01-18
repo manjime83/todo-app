@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import pb from "@/lib/pocketbase";
 import { UsersResponse } from "@/lib/pocketbase-types";
 import { FormEvent, useEffect, useState } from "react";
@@ -22,6 +22,7 @@ const Home = () => {
   }, []);
 
   const logout = (e: FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     pb.authStore.clear();
     navigate(0);
   };
@@ -41,12 +42,12 @@ const Home = () => {
         <Button onClick={logout}>Logout</Button>
       ) : (
         <div>
-          <Button asChild>
-            <Link to="/signup">Sign up</Link>
-          </Button>
-          <Button asChild>
-            <Link to="/login">Login</Link>
-          </Button>
+          <Link to="/signup" className={buttonVariants()}>
+            Sign up
+          </Link>
+          <Link to="/login" className={buttonVariants()}>
+            Login
+          </Link>
         </div>
       )}
     </>
