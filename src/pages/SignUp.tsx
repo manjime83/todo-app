@@ -72,6 +72,7 @@ const SignUp = () => {
 
   const update = async (provider: string) => {
     const usersCollection = pb.collection("users");
+
     usersCollection
       .authWithOAuth2({ provider })
       .then(async (authData) => {
@@ -87,7 +88,12 @@ const SignUp = () => {
           await usersCollection.update(authData.record.id, formData);
         }
       })
-      .then(() => navigate("/"));
+      .then(() => navigate("/"))
+      .catch((e) => {
+        if (e instanceof ClientResponseError) {
+          toast({ description: e.originalError.message, variant: "destructive" });
+        }
+      });
   };
 
   return (
@@ -124,7 +130,7 @@ const SignUp = () => {
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input type="text" {...field} />
+                    <Input type="text" {...field} autoComplete="true" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -137,7 +143,7 @@ const SignUp = () => {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input type="text" {...field} />
+                    <Input type="text" {...field} autoComplete="true" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
